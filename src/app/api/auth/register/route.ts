@@ -21,6 +21,10 @@ import jwt from 'jsonwebtoken';
  *                 type: string
  *               password:
  *                 type: string
+ *               name:
+ *                type: string
+ *               phone:
+ *                type: string
  *     responses:
  *       200:
  *         description: Registro bem-sucedido.
@@ -41,11 +45,11 @@ import jwt from 'jsonwebtoken';
 
 export async function POST(req: NextRequest, res: NextResponse) {
     try {
-        const { email, password, name, phone } = await req.json();
+        const data = await req.json();
 
         const existingUser = await prisma.users.findUnique({
             where: {
-                email: email,
+                email: data.email,
             },
         });
 
@@ -53,19 +57,54 @@ export async function POST(req: NextRequest, res: NextResponse) {
             throw new Error("E-mail já está em uso");
         }
 
-        // Hash da senha antes de salvar no banco de dados
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const freePlan = await prisma.plans.findUnique({
+            where: {
+                id: 1
+            }
+        })
 
-        const phoneFormatado = phone
+        if (!freePlan) {
+            await prisma.plans.create({
+                data: {
+                    name: 'Free',
+                    price: 0,
+                }
+            })
+        }
+        
+
+        // Hash da senha antes de salvar no banco de dados
+        const hashedPassword = await bcrypt.hash(data.password, 10);
+
+        const phoneFormatado = data.phone
         // Cria um novo usuário no banco de dados
         const newUser = await prisma.users.create({
             data: {
-                email: email,
+                email: data.email,
                 password: hashedPassword,
-                name: name,
-                phone: phoneFormatado
+                name: data.name,
+                phone: phoneFormatado,
+                current_plan_id: 1,
             },
         });
+
+        //criar playlist favorites
+        const playListFavorites = await prisma.playlists.create({
+            data: {
+                name: 'Favorites',
+                user_id: newUser.id,
+            }
+        })
+        
+        //criar assinatura
+        const subscription = await prisma.signatures.create({
+            data: {
+                user_id: newUser.id,
+                plan_id: 1,
+                start_date: new Date(),
+                end_date: new Date(new Date().setMonth(new Date().getMonth() + 1))
+            }
+        })
 
         const token = jwt.sign({ userId: newUser.id }, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c', { expiresIn: '12h' });
 
@@ -74,7 +113,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
             message: "Registro bem-sucedido",
             token,
             userid: newUser.id,
-            plan: newUser.plan
+            plan: newUser.current_plan_id
         });
     } catch (err: unknown) {
         const error = (err as Error).toString();

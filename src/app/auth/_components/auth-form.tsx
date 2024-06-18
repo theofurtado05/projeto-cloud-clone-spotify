@@ -93,7 +93,7 @@ export default function AuthForm() {
                                         Quero registrar agora
                                     </Button>
                             </Link>
-                            <ModalForgotPassword/>
+                            {/* <ModalForgotPassword/> */}
                         </div>
                         
                     </form>

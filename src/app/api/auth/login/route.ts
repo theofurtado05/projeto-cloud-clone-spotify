@@ -46,44 +46,44 @@ import jwt from 'jsonwebtoken';
 
 export async function POST(req: NextRequest, res: NextResponse) {
     try {
-        const { email, password } = await req.json();
+        const data = await req.json();
 
         // Procura o user com o email fornecido
         const user = await prisma.users.findUnique({
             where: {
-                email: email,
+                email: data.email,
             },
         });
 
         if (!user) {
-            // return NextResponse.json({
-            //     message: "Usuário não encontrado",
-            // }, { status: 404 });
             throw new Error("Usuário não encontrado")
         }
 
         // Verifica se a senha fornecida corresponde à senha no banco de dados
-        const senhaCorreta = await bcrypt.compare(password, user.password);
+        const senhaCorreta = await bcrypt.compare(data.password, user.password);
 
         if (!senhaCorreta) {
             return NextResponse.json({
                 message: "Senha incorreta",
             }, { status: 401 });
-        }
+        }   
+
+        //3f8c4e1b08b74f36b9f9e3b4e2a8c7e0
 
         //@ts-ignore
-        const token = jwt.sign({ userId: user.id },  process.env.JWT_SECRET , { expiresIn: '12h' });
+        const token = jwt.sign({ userId: user.id },  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c" , { expiresIn: '12h' });
 
         // Autenticação bem-sucedida, retornando o token
         return NextResponse.json({
             message: "Login bem-sucedido",
             token: token,
             userid: user.id,
-            plan: user.plan,
+            plan: user.current_plan_id,
             user: {
                 email: user.email,
                 name: user.name,
                 phone: user.phone,
+                current_plan_id: user.current_plan_id,
             }
 
         });

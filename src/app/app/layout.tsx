@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <>
     <head>
-    <script defer data-domain="jobeiros.com" src="https://plausible.io/js/script.js"></script>
+    
           {/* <!-- Meta Pixel Code --> */}
           <script>{`
           

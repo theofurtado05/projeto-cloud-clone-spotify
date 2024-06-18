@@ -6,9 +6,9 @@ export const getApiDocs = async () => {
       definition: {
         openapi: '3.0.0',
         info: {
-          title: 'CV SaaS Doc API',
+          title: 'Theofy - API',
           version: '1.0',
-          description: 'Uma solução completa para gerenciamento e otimização de currículos e Entrevistas.', 
+          description: 'O melhor streaming de músicas desse Brasil Varonil!', 
         },
         components: {
           securitySchemes: {

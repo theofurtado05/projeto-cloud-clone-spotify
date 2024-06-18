@@ -59,7 +59,7 @@ export function DashboardPageHeaderNav({
   className,
   children,
 }: DashboardPageGenericProps) {
-  return <nav className={cn(['', className])}>{children}</nav>
+  return <nav className={cn(['!h-[36px]', className])}>{children}</nav>
 }
 
 export function DashboardPageMain({

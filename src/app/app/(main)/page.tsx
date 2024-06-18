@@ -18,6 +18,7 @@ import { useTheme } from 'next-themes'
 import { Icon } from '@iconify/react'
 import Info from '@/components/app/info'
 import { ModalVideo } from '@/components/app/modal-video'
+import BarraPesquisar from '../_components/barra-pesquisar'
 
 
   
@@ -38,9 +39,7 @@ export default function Page() {
       <DashboardPage>
         <DashboardPageHeader>
           <DashboardPageHeaderTitle>
-            <span className='flex items-center gap text-[12px]'>
-              TheoFy
-            </span>
+            <BarraPesquisar />
             </DashboardPageHeaderTitle>
           <DashboardPageHeaderNav>
             <></>
