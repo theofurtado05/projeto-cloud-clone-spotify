@@ -18,7 +18,6 @@ export default function ResetForm({token} : {token: string}) {
     const form = useForm()
     const [isSending, setIsSending] = useState<boolean>(false)
     
-    
     const handleSubmit = form.handleSubmit(async (data) => {
         setIsSending(true)
        try {

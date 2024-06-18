@@ -67,7 +67,7 @@ export default function AuthForm() {
                 <div className="mx-auto w-[350px] space-y-6">
                     <div className="space-y-2 text-center">
                         <h1 className="text-3xl font-bold">Entrar</h1>
-                        <p className="text-gray-500 dark:text-gray-400">Preencha suas credenciais para acessar o Jobeiros.</p>
+                        <p className="text-gray-500 dark:text-gray-400">Preencha suas credenciais para acessar o TheoFy.</p>
                     </div>
 
                     <form className="space-y-4" onSubmit={handleSubmit}>

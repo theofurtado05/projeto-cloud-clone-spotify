@@ -1,17 +1,15 @@
-import { InterviewProvider } from "@/context/interview.context"
 import { MainSidebar } from "./_components/sidebar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { UserProvider } from "@/context/user.context"
 import { useWorkflow, WorkflowProvider } from '@/context/workflow.context'
 import ModalUpgrade from "./_components/modal-upgrade"
-import { ResumeProvider } from "@/context/resume.context"
 import Script from "next/script"
 
 //...
 //...meta pixel code adicionado....
 export const metadata = {
-  title: 'Jobeiros',
-  description: 'Alavanque sua carreira e garanta seu emprego com Jobeiros',
+  title: 'TheoFy',
+  description: 'Escute musicas no TheoFy',
 }
 
 export default function RootLayout({
@@ -57,8 +55,6 @@ export default function RootLayout({
       >
         <WorkflowProvider>
           <UserProvider>
-            <InterviewProvider>
-              <ResumeProvider>
                   <>
                     <MainSidebar/>
                     <main className="sm:ml-[255px] relative">
@@ -66,8 +62,6 @@ export default function RootLayout({
                           
                     </main>
                   </>
-                </ResumeProvider>
-            </InterviewProvider>
           </UserProvider>
         </WorkflowProvider>
       </ThemeProvider>

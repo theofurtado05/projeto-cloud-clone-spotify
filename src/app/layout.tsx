@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="pt" suppressHydrationWarning>
       <head>
-        <script defer data-domain="jobeiros.com" src="https://plausible.io/js/script.js"></script>
+        
 
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

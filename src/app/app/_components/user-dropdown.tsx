@@ -65,8 +65,6 @@ export function UserDropdown() {
     return <UserDropdownSkeleton />;
   }
   
-  
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -88,50 +86,6 @@ export function UserDropdown() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 z-50" align="end" forceMount>
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-xs leading-none text-muted-foreground">
-              {user.email}
-            </p>
-          </div>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-xs leading-none text-muted-foreground">
-            {user.credits_interview} Entrevistas restantes
-            </p>
-          </div>
-        </DropdownMenuLabel>
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-xs leading-none text-muted-foreground">
-              {user.credits_analyze} Analises restantes
-            </p>
-          </div>
-        </DropdownMenuLabel>
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-xs leading-none text-muted-foreground">
-            {user.credits_resume} Currículos restantes
-            </p>
-          </div>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-       
-          {user.plan != 'PRO' &&
-            <>
-              <DropdownMenuGroup>
-                <Link className='flex items-center w-full' href="/app/plans">
-                  <DropdownMenuItem className='w-full'>
-                      <DiamondIcon className={"w-3 h-3 mr-3"} />
-                      Upgrade
-                  </DropdownMenuItem>
-                </Link>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-            </> 
-          }
         <DropdownMenuItem onClick={() => signOut()}>
           <LockClosedIcon className="w-3 h-3 mr-3" />
           Log out

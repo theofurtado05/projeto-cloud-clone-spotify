@@ -68,69 +68,25 @@ export function MainSidebar() {
       <DashboardSidebarMain className="flex flex-col flex-grow">
         <DashboardSidebarNav>
           <DashboardSidebarNavMain>
-            <DashboardSidebarNavLink href="/app/my-interviews" active={isActive('/app/my-interviews')}>
-              <HomeIcon className="w-3 h-3 mr-3" />
-              Minhas entrevistas
-            </DashboardSidebarNavLink>
             <DashboardSidebarNavLink href="/app" active={isActive('/app')}>
               <ChatBubbleIcon className="w-3 h-3 mr-3" />
-              Simulador de entrevista
+              Todas as músicas
             </DashboardSidebarNavLink>
-            
+            <DashboardSidebarNavLink href="/app/my-interviews" active={isActive('/app/my-interviews')}>
+              <HomeIcon className="w-3 h-3 mr-3" />
+              Minhas playlists
+            </DashboardSidebarNavLink>
             <DashboardSidebarNavLink
               href="/app/analyze"
               active={isActive('/app/analyze')}
             >
               <MixerVerticalIcon className="w-3 h-3 mr-3" />
-              Análise de Curriculo
-            </DashboardSidebarNavLink>
-            <DashboardSidebarNavLink
-              href="/app/curriculo-builder"
-              active={isActive('/app/curriculo-builder')}
-            >
-              <ReaderIcon className="w-3 h-3 mr-3" />
-              Criador de Currículos
-            </DashboardSidebarNavLink>
-            <DashboardSidebarNavLink
-              href="/app/samples"
-              active={isActive('/app/samples')}
-            >
-              <ArchiveIcon className="w-3 h-3 mr-3" />
-              Biblioteca de Currículos
-            </DashboardSidebarNavLink>
-            <DashboardSidebarNavLink
-              href="/app/jobs"
-              active={isActive('/app/jobs')}
-            >
-              <RocketIcon className="w-3 h-3 mr-3" />
-              Vagas Exclusivas
-            </DashboardSidebarNavLink>
-            <DashboardSidebarNavLink
-              href="/app/about-us"
-              active={isActive('/app/about-us')}
-            >
-              <PersonIcon className="w-3 h-3 mr-3" />
-              Quem somos nós?
-            </DashboardSidebarNavLink>
-            <DashboardSidebarNavLink
-              href="/app/testimony"
-              active={isActive('/app/testimony')}
-            >
-              <DrawingPinIcon className="w-3 h-3 mr-3" />
-              Depoimentos
+              Músicas Favoritas
             </DashboardSidebarNavLink>
           </DashboardSidebarNavMain>
         </DashboardSidebarNav>
 
         <DashboardSidebarNav className="mt-auto">
-          <DashboardSidebarNavHeader className='mb-4'>
-              <DashboardSidebarNavHeaderTitle className='flex items-center gap-2'>
-                <span className='w-full'>
-                  Aparecer para recrutadores
-                </span>
-                <Switch checked={isVisible} onCheckedChange={handleVisibility}/>
-              </DashboardSidebarNavHeaderTitle>
-          </DashboardSidebarNavHeader>
           <DropdownMenuSeparator className='mb-4'/>
           <DashboardSidebarNavHeader>
             <DashboardSidebarNavHeaderTitle>
@@ -138,7 +94,7 @@ export function MainSidebar() {
             </DashboardSidebarNavHeaderTitle>
           </DashboardSidebarNavHeader>
           <DashboardSidebarNavMain>
-            <DashboardSidebarNavLink href="https://instagram.com/jobeiros_">
+            <DashboardSidebarNavLink href="https://instagram.com/theofy">
               Precisa de ajuda?
             </DashboardSidebarNavLink>
           </DashboardSidebarNavMain>
