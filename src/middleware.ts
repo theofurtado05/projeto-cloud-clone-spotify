@@ -10,7 +10,7 @@ export default async function middleware(req: NextRequest) {
     if (req.nextUrl.pathname.startsWith('/api/')) {
       // Aplicar cabeçalhos CORS manualmente
       const res = NextResponse.next();
-      res.headers.set('Access-Control-Allow-Origin', 'https://jobeiros.com, https://kirvano.com, https://app.kirvano.com, http://jobeiros.com');
+      res.headers.set('Access-Control-Allow-Origin', '*');
       res.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
       res.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 

@@ -32,13 +32,13 @@ export default function RegisterForm() {
                     Cookies.set('userid', response.data.userid, {expires: 84600/2})
                     toast({
                         title: 'Registrado com Sucesso!',
-                        description: 'Aproveite o Jobeiros!',
+                        description: 'Aproveite o Theofy!',
                         duration: 5000,
                     })
                     const sendWelcomeEmail = await axios.post('/api/welcome-email', {
                         userEmail: data.email
                     })
-                    window.location.href = '/app/plans'
+                    window.location.href = '/app'
                 }).catch((err) => {
                     toast({
                         variant: "destructive",
@@ -82,7 +82,7 @@ export default function RegisterForm() {
                 <div className="mx-auto w-[350px] space-y-6">
                     <div className="space-y-2 text-center">
                         <h1 className="text-3xl font-bold">Registrar</h1>
-                        <p className="text-gray-500 dark:text-gray-400">Registre-se no Jobeiros e alavanque sua carreira.</p>
+                        <p className="text-gray-500 dark:text-gray-400">Registre-se no Theofy.</p>
                     </div>
 
                     <form className="space-y-4" onSubmit={handleSubmit}>

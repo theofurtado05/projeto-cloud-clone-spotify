@@ -34,7 +34,7 @@ export default function AuthForm() {
                 Cookies.set('userid', response.data.userid, {expires: 84600/2})
                 toast({
                     title: 'Sucesso!',
-                    description: 'Aproveite o Jobeiros!',
+                    description: 'Aproveite o Theofy!',
                     duration: 5000,
                 })
                 setIsLoading(false)
