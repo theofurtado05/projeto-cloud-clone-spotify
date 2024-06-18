@@ -24,9 +24,17 @@ jobs:
           npm run build
           npm run test --if-present
 
+      - name: Start Next.js server
+        run: npm start &
+        # Iniciar o servidor em segundo plano
+
+      - name: Wait for Next.js server to be ready
+        run: sleep 10
+        # Esperar alguns segundos para garantir que o servidor esteja pronto
+
       - name: Verify API
-        run: curl -f http://localhost:3000/api/musics || exit 1
-        # Certifique-se de que a API está funcionando corretamente durante o build
+        run: curl -f https://theofy.azurewebsites.net/api/musics || exit 1
+        # Verificar se a API está funcionando corretamente
 
       - name: Archive production artifacts
         run: |
