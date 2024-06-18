@@ -13,10 +13,10 @@ model users {
   password        String      @db.VarChar(500)
   phone           String      @db.VarChar(15)
   name            String      @db.VarChar(50)
-  current_plan_id Int        @default(0)
+  current_plan_id Int         @default(0)
   playlists       playlists[]
   signatures      signatures?
-  currentPlan     plans?      @relation(fields: [current_plan_id], references: [id])
+  currentPlan     plans       @relation(fields: [current_plan_id], references: [id])
 }
 
 model plans {
@@ -38,18 +38,34 @@ model signatures {
 }
 
 model playlists {
-  id      Int      @id @default(autoincrement())
-  name    String   @db.VarChar(50)
+  id      Int              @id @default(autoincrement())
+  name    String           @db.VarChar(50)
   user_id Int
-  musics  musics[]
-  user    users    @relation(fields: [user_id], references: [id])
+  musics  playlist_music[]
+  user    users            @relation(fields: [user_id], references: [id])
 }
 
 model musics {
-  id          Int       @id @default(autoincrement())
-  name        String    @db.VarChar(50)
-  artist      String    @db.VarChar(50)
-  album       String    @db.VarChar(50)
+  id        Int              @id @default(autoincrement())
+  name      String           @db.VarChar(50)
+  album     String           @db.VarChar(50)
+  artistId  Int
+  duration  Int
+  artist    artists          @relation(fields: [artistId], references: [id])
+  playlists playlist_music[]
+}
+
+model artists {
+  id     Int      @id @default(autoincrement())
+  name   String   @db.VarChar(50)
+  musics musics[]
+}
+
+model playlist_music {
   playlist_id Int
+  music_id    Int
+  music       musics    @relation(fields: [music_id], references: [id])
   playlist    playlists @relation(fields: [playlist_id], references: [id])
+
+  @@id([playlist_id, music_id])
 }

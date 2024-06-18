@@ -19,6 +19,7 @@ import { Icon } from '@iconify/react'
 import Info from '@/components/app/info'
 import { ModalVideo } from '@/components/app/modal-video'
 import BarraPesquisar from '../_components/barra-pesquisar'
+import AllMusics from './_components/all-musics'
 
 
   
@@ -46,7 +47,9 @@ export default function Page() {
           </DashboardPageHeaderNav>
         </DashboardPageHeader>
         <DashboardPageMain>
-          <></>
+          <>
+            <AllMusics/>
+          </>
         </DashboardPageMain>
       </DashboardPage>
     )
