@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "TheoFy",
-  description: "O melhor streaming de músicas do Brasil varonil",
+  description: "O melhor streaming de músicas do Brasil varonil!",
 };
 
 export default function RootLayout({
