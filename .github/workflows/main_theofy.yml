@@ -27,10 +27,10 @@ jobs:
       - name: Archive production artifacts
         run: |
           mkdir -p build
-          mv .next build/.next
-          mv node_modules build/node_modules
-          mv package.json build/package.json
-          mv next.config.js build/next.config.js
+          cp -r .next build/.next
+          cp -r node_modules build/node_modules
+          cp package.json build/package.json
+          cp next.config.js build/next.config.js || true
         working-directory: .
 
       - name: Upload build artifacts
