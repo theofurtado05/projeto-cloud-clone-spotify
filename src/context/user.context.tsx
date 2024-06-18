@@ -1,5 +1,4 @@
 "use client"
-import { QuestionType } from '@/app/app/interview/questions/_components/question';
 import React, { createContext, useState, useContext } from 'react';
 
 
