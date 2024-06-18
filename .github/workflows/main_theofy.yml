@@ -24,6 +24,10 @@ jobs:
           npm run build
           npm run test --if-present
 
+      - name: Verify API
+        run: curl -f http://localhost:3000/api/musics || exit 1
+        # Certifique-se de que a API está funcionando corretamente durante o build
+
       - name: Archive production artifacts
         run: |
           mkdir -p build
