@@ -1,4 +1,4 @@
-export function CardPricing(){
+export default function Page(){
     return (
         <>
         

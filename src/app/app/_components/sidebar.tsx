@@ -12,7 +12,7 @@ import {
   DashboardSidebarFooter,
 } from '@/components/app/sidebar'
 import { usePathname } from 'next/navigation'
-import { ArchiveIcon, ChatBubbleIcon, DrawingPinIcon, HomeIcon, MixerVerticalIcon, PersonIcon, ReaderIcon, RocketIcon } from '@radix-ui/react-icons'
+import { ArchiveIcon, ChatBubbleIcon, DrawingPinIcon, HeartFilledIcon, HeartIcon, HomeIcon, MixerVerticalIcon, PersonIcon, ReaderIcon, RocketIcon } from '@radix-ui/react-icons'
 // import { UserDropdown } from './user-dropdown'
 // import { Logo } from '@/components/logo'
 import { Session } from 'next-auth'
@@ -28,6 +28,8 @@ import { Icon } from '@iconify/react'
 import { CloseIcon } from '@/components/icons/close'
 import { DropdownMenuSeparator } from '@/components/ui/dropdown-menu'
 import { Switch } from '@/components/ui/switch'
+import { MusicIcon } from '@/components/icons/music-icon'
+import { PlaylistIcon } from '@/components/icons/playlist-icon'
 
 
 export function MainSidebar() {
@@ -69,18 +71,18 @@ export function MainSidebar() {
         <DashboardSidebarNav>
           <DashboardSidebarNavMain>
             <DashboardSidebarNavLink href="/app" active={isActive('/app')}>
-              <ChatBubbleIcon className="w-3 h-3 mr-3" />
+              <MusicIcon className="w-4 h-4 mr-3" />
               Todas as músicas
             </DashboardSidebarNavLink>
-            <DashboardSidebarNavLink href="/app/my-interviews" active={isActive('/app/my-interviews')}>
-              <HomeIcon className="w-3 h-3 mr-3" />
+            <DashboardSidebarNavLink href="/app/playlists" active={isActive('/app/playlists')}>
+              <PlaylistIcon className="w-4 h-4 mr-3" />
               Minhas playlists
             </DashboardSidebarNavLink>
             <DashboardSidebarNavLink
-              href="/app/analyze"
-              active={isActive('/app/analyze')}
+              href="/app/favorites"
+              active={isActive('/app/favorites')}
             >
-              <MixerVerticalIcon className="w-3 h-3 mr-3" />
+              <HeartIcon className="w-4 h-4 mr-3" />
               Músicas Favoritas
             </DashboardSidebarNavLink>
           </DashboardSidebarNavMain>

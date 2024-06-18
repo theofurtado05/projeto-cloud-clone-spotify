@@ -8,48 +8,48 @@ datasource db {
 }
 
 model users {
-  id             Int              @id @default(autoincrement())
-  email          String           @unique @db.VarChar(255)
-  password       String           @db.VarChar(500)
-  phone          String           @db.VarChar(15)
-  name           String           @db.VarChar(50)
-  playlists      playlists[]
-  current_plan_id  Int
-  signatures     signatures[]
+  id              Int         @id @default(autoincrement())
+  email           String      @unique @db.VarChar(255)
+  password        String      @db.VarChar(500)
+  phone           String      @db.VarChar(15)
+  name            String      @db.VarChar(50)
+  current_plan_id Int        @default(0)
+  playlists       playlists[]
+  signatures      signatures?
+  currentPlan     plans?      @relation(fields: [current_plan_id], references: [id])
 }
 
 model plans {
-  id         Int         @id @default(autoincrement())
-  name       String      @db.VarChar(50)
+  id         Int          @id @default(autoincrement())
+  name       String       @db.VarChar(50)
   price      Float
   signatures signatures[]
+  users      users[]
 }
 
 model signatures {
-  id      Int      @id @default(autoincrement())
-  user_id Int @unique
-  plan_id Int
-  user    users    @relation(fields: [user_id], references: [id])
-  plan    plans    @relation(fields: [plan_id], references: [id])
-  start_date   DateTime
-  end_date    DateTime
+  id         Int      @id @default(autoincrement())
+  user_id    Int      @unique
+  plan_id    Int
+  start_date DateTime
+  end_date   DateTime
+  plan       plans    @relation(fields: [plan_id], references: [id], onUpdate: NoAction)
+  user       users    @relation(fields: [user_id], references: [id])
 }
 
 model playlists {
   id      Int      @id @default(autoincrement())
   name    String   @db.VarChar(50)
   user_id Int
-  user    users    @relation(fields: [user_id], references: [id])
   musics  musics[]
+  user    users    @relation(fields: [user_id], references: [id])
 }
 
 model musics {
-  id             Int              @id @default(autoincrement())
-  name           String           @db.VarChar(50)
-  artist         String           @db.VarChar(50)
-  album          String           @db.VarChar(50)
-  playlist_id    Int
-  playlist       playlists        @relation(fields: [playlist_id], references: [id])
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(50)
+  artist      String    @db.VarChar(50)
+  album       String    @db.VarChar(50)
+  playlist_id Int
+  playlist    playlists @relation(fields: [playlist_id], references: [id])
 }
-
-

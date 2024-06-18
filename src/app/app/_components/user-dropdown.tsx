@@ -80,7 +80,7 @@ export function UserDropdown() {
               <p className="text-sm font-medium leading-none">{user.email}</p>
             )}
             <p className="text-xs leading-none text-muted-foreground">
-              {toCapitalize(user.plan)}
+              {toCapitalize(user.currentPlan.name)}
             </p>
           </div>
         </Button>
