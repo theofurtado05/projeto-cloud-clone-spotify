@@ -74,17 +74,6 @@ export function MainSidebar() {
               <MusicIcon className="w-4 h-4 mr-3" />
               Todas as músicas
             </DashboardSidebarNavLink>
-            <DashboardSidebarNavLink href="/app/playlists" active={isActive('/app/playlists')}>
-              <PlaylistIcon className="w-4 h-4 mr-3" />
-              Minhas playlists
-            </DashboardSidebarNavLink>
-            <DashboardSidebarNavLink
-              href="/app/favorites"
-              active={isActive('/app/favorites')}
-            >
-              <HeartIcon className="w-4 h-4 mr-3" />
-              Músicas Favoritas
-            </DashboardSidebarNavLink>
           </DashboardSidebarNavMain>
         </DashboardSidebarNav>
 
