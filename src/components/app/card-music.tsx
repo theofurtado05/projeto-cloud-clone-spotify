@@ -11,7 +11,7 @@ export default function CardMusic({ music } : { music: Music }) {
   return (
     <Card className="w-full max-w-sm bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
       <div className="relative">
-        <img src="/placeholder.svg" alt="Album Artwork" width={300} height={200} className="w-full h-48 object-cover" />
+        <img src={music.img} alt="Album Artwork" width={300} height={200} className="w-full h-48 object-cover" />
         <Button variant="ghost" className="absolute top-4 right-4 text-gray-900 dark:text-gray-100">
           <HeartIcon className="w-6 h-6" />
         </Button>

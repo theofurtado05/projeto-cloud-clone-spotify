@@ -8,6 +8,7 @@ export type Music = {
     artistId: number;
     duration: number;
     artist: Artist;
+    img?: string;
     playlists?: PlaylistMusic[];
 };
 

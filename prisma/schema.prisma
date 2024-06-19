@@ -51,6 +51,7 @@ model musics {
   album     String           @db.VarChar(50)
   artistId  Int
   duration  Int
+  img       String?          @db.VarChar(255)
   artist    artists          @relation(fields: [artistId], references: [id])
   playlists playlist_music[]
 }
