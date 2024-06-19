@@ -5,8 +5,7 @@ import { useWorkflow, WorkflowProvider } from '@/context/workflow.context'
 import ModalUpgrade from "./_components/modal-upgrade"
 import Script from "next/script"
 
-//...
-//...meta pixel code adicionado....
+
 export const metadata = {
   title: 'TheoFy',
   description: 'Escute musicas no TheoFy',
