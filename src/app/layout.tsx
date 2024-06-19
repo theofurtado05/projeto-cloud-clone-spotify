@@ -52,40 +52,6 @@ export default function RootLayout({
         </style>
         
       </body>
-      <footer>
-        <Script strategy="afterInteractive">
-        {`
-          function work() {
-              function getParams() {
-                  const url = new URL(window.location.href);
-                  const src = url.searchParams.get("src");
-                  const sck = url.searchParams.get("sck");
-                  const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
-                      .map(param => \`\${param}=\${encodeURIComponent(url.searchParams.get(param) || '')}\`)
-                      .join('&');
-                  let allParams = '';
-                  if (src) allParams += \`src=\${encodeURIComponent(src)}&\`;
-                  if (sck) allParams += \`sck=\${encodeURIComponent(sck)}&\`;
-                  allParams += utmParams;
-                  return allParams;
-              }
-              (function updateLinks() {
-                  document.querySelectorAll("a").forEach((link) => {
-                      const params = getParams();
-                      if (params) {
-                          link.href += link.href.includes("?") ? \`&\${params}\` : \`?\${params}\`;
-                      }
-                  });
-              })();
-          }
-          if (document.readyState === "complete") {
-              work();
-          } else {
-              window.addEventListener("load", work);
-          }
-        `}
-        </Script>
-      </footer>
     </html>
   );
 }
